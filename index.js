@@ -10,5 +10,4 @@ view = new View(model, client)
 
 
 model.addPeep("This is an example peep")
-view.displayPeeps();
-// notesView.displayNotesFromAPI();
+view.displayPeepsFromAPI();

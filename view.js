@@ -17,10 +17,18 @@ class View{
     //Add peeps back including new one
     peeps.forEach(peep => {
       const peepEl = document.createElement('div');
-      peepEl.textContent = peep;
+      peepEl.textContent = peep.body;
       peepEl.className = 'peep';
       this.mainContainerEl.append(peepEl);
     })
+  }
+
+  displayPeepsFromAPI(){
+    this.client.loadPeeps(peeps => {
+      this.model.setPeeps(peeps);
+      this.displayPeeps();
+    });
+
   }
 
 }

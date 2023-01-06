@@ -26,6 +26,7 @@ describe(View, () => {
     // 3. There should now be 2 div.peep on the page
     expect(document.querySelectorAll('div.peep').length).toEqual(2);
     expect(document.querySelectorAll('div.peep')[0].textContent).toBe('peep 1');
+    expect(document.querySelectorAll('div.peep')[1].textContent).toBe('peep 2');
     
 
   })
