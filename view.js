@@ -4,7 +4,13 @@ class View{
     this.client = client;
 
     this.mainContainerEl = document.querySelector('#main-container');
-    this.showPeepsButton = document.querySelector('#show-peeps');
+    this.postPeepButton = document.querySelector('#post-peep');
+
+    this.postPeepButton.addEventListener('click', () => {
+      const newPeep = document.querySelector("#message-input").value;
+      this.postNewPeep(newPeep);
+      document.querySelector("#message-input").value = "";
+    });
 
   }
 
@@ -29,6 +35,13 @@ class View{
       this.displayPeeps();
     });
 
+  }
+
+  postNewPeep = (newPeep) => {
+    this.model.addPeep(newPeep);
+    this.displayPeeps();
+    const data = {user_id: this.client.getUserInfo().user_id, body: newPeep };
+    this.client.createPeep(data)
   }
 
 }
