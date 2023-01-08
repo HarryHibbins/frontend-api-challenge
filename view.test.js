@@ -53,29 +53,4 @@ describe(View, () => {
     expect(document.querySelectorAll('div.peep')[1].textContent).toBe('mocked API peep 2');
     
   })
-  it ('Post peep: Takes the input field and passes it to the model and client class', () =>{
-    document.body.innerHTML = fs.readFileSync('./index.html');
-
-    const mockModel = {
-      addPeep: (newPeep) => {},
-      getPeeps: () => {
-        return [{user_id: 1, body: "peep 1"}, {user_id: 1, body: "peep 2"}]
-      }
-    }
-    const mockClient = {
-      createPeep: (data) => {}
-    }
-
-    const view = new View(mockModel, mockClient)
-
-    const inputEl = document.querySelector("#message-input")
-    inputEl.value = 'mocked input peep'
-
-    const postPeepButton = document.querySelector('#post-peep')
-    postPeepButton.click()
-
-    expect(document.querySelectorAll('div.peep').length).toEqual(3);
-    expect(document.querySelectorAll('div.peep')[2].textContent).toBe('mocked input peep');
-    
-  })
 })

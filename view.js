@@ -38,9 +38,9 @@ class View{
   }
 
   postNewPeep = (newPeep) => {
-    this.model.addPeep(newPeep);
-    this.displayPeeps();
     const data = {user_id: this.client.getUserInfo().user_id, body: newPeep };
+    this.model.addPeep(data);
+    this.displayPeepsFromAPI();
     this.client.createPeep(data)
   }
 
